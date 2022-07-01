@@ -17,7 +17,7 @@ export default function UploadForm() {
                     <div className="grid grid-cols-3 gap-6">
                       <div className="col-span-3 sm:col-span-2">
                         <label htmlFor="nftName" className="block text-sm font-medium text-gray-700">
-                          NFT Name
+                          Name
                         </label>
                         <div className="mt-1 flex rounded-md shadow-sm">
                           <input
@@ -25,7 +25,7 @@ export default function UploadForm() {
                             name="nftName"
                             id="nftName"
                             className="focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-md sm:text-sm border-gray-300"
-                            placeholder="theItalianDev NFT"
+                            placeholder="NFT name here"
                           />
                         </div>
                       </div>
@@ -50,7 +50,7 @@ export default function UploadForm() {
                     </div>
   
                     <div>
-                      <label className="block text-sm font-medium text-gray-700">NFT file</label>
+                      <label className="block text-sm font-medium text-gray-700">Image</label>
                       <div className="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-md">
                         <div className="space-y-1 text-center">
                           <svg
@@ -72,7 +72,7 @@ export default function UploadForm() {
                               htmlFor="file-upload"
                               className="relative cursor-pointer bg-white rounded-md font-medium text-indigo-600 hover:text-indigo-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500"
                             >
-                              <span>Upload your NFT</span>
+                              <span>Upload your image</span>
                               <input id="file-upload" name="file-upload" type="file" className="sr-only" />
                             </label>
                           </div>
@@ -86,7 +86,7 @@ export default function UploadForm() {
                       type="submit"
                       className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                     >
-                      Lazy-Mint now!
+                      Mint
                     </button>
                   </div>
                 </div>

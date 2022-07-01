@@ -5,17 +5,13 @@ export default function AuthPage() {
   return (
     <>
     <Head>
-        <title>Auth | NFT Minter</title>
+        <title>Ratofy Minter</title>
     </Head>
       <div className="h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
         <div className="max-w-md h-2/3 w-full space-y-8">
           <div>
-            <img
-              className="mx-auto h-12 w-auto"
-              src="/nft.png"
-              alt="Workflow"
-            />
-            <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-600">Mint your NFTs Now for FREE</h2>
+            
+            <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-600">Mint your NFTs for free using Ratofy minter</h2>
           </div>
           <button
                 type="button"
