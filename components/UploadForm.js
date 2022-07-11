@@ -1,6 +1,24 @@
 import Head from 'next/head'
+import { useState } from 'react'
 
 export default function UploadForm({logout}) {
+
+  const [input, setInput] = useState({
+    nftName: '',
+    description: ''
+  })
+
+  const [userImage,setUserImage] = useState(null)
+
+  const handleOnChange = (e) =>{
+    setInput(prevState => ({
+      ...prevState,
+      [e.target.name]: e.target.value
+    }))
+  }
+
+  console.log(userImage)
+
     return (
         <>
         <Head>
@@ -26,6 +44,8 @@ export default function UploadForm({logout}) {
                             id="nftName"
                             className="focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-md sm:text-sm border-gray-300"
                             placeholder="NFT name here"
+                            value={input.nftName}
+                            onChange={e => handleOnChange(e)}
                           />
                         </div>
                       </div>
@@ -42,6 +62,8 @@ export default function UploadForm({logout}) {
                           rows={3}
                           className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm border border-gray-300 rounded-md"
                           placeholder="The only NFT you need to have in your wallet"
+                          value={input.description}
+                          onChange={e => handleOnChange(e)}
                         />
                       </div>
                       <p className="mt-2 text-sm text-gray-500">
@@ -73,7 +95,7 @@ export default function UploadForm({logout}) {
                               className="relative cursor-pointer bg-white rounded-md font-medium text-indigo-600 hover:text-indigo-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500"
                             >
                               <span>Upload your image</span>
-                              <input id="file-upload" name="file-upload" type="file" className="sr-only" />
+                              <input onChange={e => setUserImage(e.target.files[0])} id="file-upload" name="file-upload" type="file" className="sr-only" />
                             </label>
                           </div>
                           <p className="text-xs text-gray-500">PNG, JPG, GIF...</p>

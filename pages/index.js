@@ -14,7 +14,7 @@ export default function Home() {
     const metaAuth = async () => {
       try{
         await authenticate({
-          signingMessage: "Login to start minting"
+          signingMessage: "Login to start minting now"
         })
 
       } catch(error){
