@@ -1,13 +1,13 @@
 import Head from 'next/head'
 
-export default function UploadForm() {
+export default function UploadForm({logout}) {
     return (
         <>
         <Head>
             <title>NFT Minter</title>
         </Head>
         <div className='w-screen h-auto flex justify-end items-center'>
-            <button type="button" className='mt-6 mr-10 py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-black hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500'>Logout</button>
+            <button onClick={logout} type="button" className='mt-6 mr-10 py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-black hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500'>Logout</button>
         </div>
         <div className="flex items-center justify-center overflow-y-hidden">
             <div className="w-2/3 max-w-screen mt-6">
