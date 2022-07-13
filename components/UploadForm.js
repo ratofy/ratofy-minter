@@ -1,9 +1,10 @@
 import Head from 'next/head'
 import { useState } from 'react'
+import { useMoralisFile } from 'react-moralis'
 
 export default function UploadForm({logout}) {
 
-  const [input, setInput] = useState({
+  const [inputed, setInputed] = useState({
     nftName: '',
     description: ''
   })
@@ -11,13 +12,13 @@ export default function UploadForm({logout}) {
   const [userImage,setUserImage] = useState(null)
 
   const handleOnChange = (e) =>{
-    setInput(prevState => ({
+    setInputed(prevState => ({
       ...prevState,
       [e.target.name]: e.target.value
     }))
   }
 
-  console.log(userImage)
+  const {saveFile} = useMoralisFile()
 
     return (
         <>
@@ -29,7 +30,19 @@ export default function UploadForm({logout}) {
         </div>
         <div className="flex items-center justify-center overflow-y-hidden">
             <div className="w-2/3 max-w-screen mt-6">
-              <form>
+              <form onSubmit={async e => {
+                e.preventDefault()
+                if(inputed !== null){
+                  await saveFile(input.nftName, inputed, {
+                    saveIPFS: true,
+                    onSuccess: (file) =>{
+                      console.log(file)
+                    }
+                  })
+                }
+
+
+              }}>
                 <div className="shadow sm:rounded-md sm:overflow-hidden">
                   <div className="px-4 py-5 bg-white space-y-6 sm:p-6">
                     <div className="grid grid-cols-3 gap-6">
@@ -44,7 +57,7 @@ export default function UploadForm({logout}) {
                             id="nftName"
                             className="focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-md sm:text-sm border-gray-300"
                             placeholder="NFT name here"
-                            value={input.nftName}
+                            value={inputed.nftName}
                             onChange={e => handleOnChange(e)}
                           />
                         </div>
@@ -62,7 +75,7 @@ export default function UploadForm({logout}) {
                           rows={3}
                           className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm border border-gray-300 rounded-md"
                           placeholder="The only NFT you need to have in your wallet"
-                          value={input.description}
+                          value={inputed.description}
                           onChange={e => handleOnChange(e)}
                         />
                       </div>
@@ -75,7 +88,10 @@ export default function UploadForm({logout}) {
                       <label className="block text-sm font-medium text-gray-700">Image</label>
                       <div className="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-md">
                         <div className="space-y-1 text-center">
-                          <svg
+                          {inputed !== null? (
+                            <p>{inputed.name}</p>
+                          ): (
+                            <svg
                             className="mx-auto h-12 w-12 text-gray-400"
                             stroke="currentColor"
                             fill="none"
@@ -89,6 +105,8 @@ export default function UploadForm({logout}) {
                               strokeLinejoin="round"
                             />
                           </svg>
+                          )}
+                          
                           <div className="flex text-sm text-gray-600">
                             <label
                               htmlFor="file-upload"
